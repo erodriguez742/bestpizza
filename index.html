@@ -84,7 +84,9 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiYmV5ZXJhdXQiLCJhIjoiY2lnM3hhMGthMjc5NHRqbTNvM
 var mapTooltipsJS = L.mapbox.map('map-tooltips-js', 'mapbox.light')
   .setView([42.7325, -84.5555], 12);
 var myLayer = L.mapbox.featureLayer().addTo(mapTooltipsJS);
-       
+
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, ‘bottom-left');      
     
     
 var myLayer = L.mapbox.featureLayer().addTo(mapTooltipsJS);
