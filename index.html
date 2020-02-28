@@ -131,9 +131,9 @@ background: #3074a4;
               zoom: 12.5
             });
 		    map.on('load', function() {
-map.addSource('museums', {
+map.addSource('YL_New_York', {
 type: 'vector',
-url: 'mapbox://mapbox.2opop9hr'
+url: 'mapbox://styles/erodriguez742/ck5ybojwz0uvf1isaujwsisbv'
 });
 map.addLayer({
 'id': 'museums',
@@ -146,17 +146,17 @@ map.addLayer({
 'circle-radius': 8,
 'circle-color': 'rgba(55,148,179,1)'
 },
-'source-layer': 'museum-cusco'
+'source-layer': 'erodriguez742.ck5yb7pl1012l2nmo0h7zf3qi-55ocw'
 });
  
-map.addSource('contours', {
+map.addSource('clinics', {
 type: 'vector',
-url: 'mapbox://mapbox.mapbox-terrain-v2'
+url: 'mapbox://mapbox.erodriguez742.ck5yiugnm0n4u2io9xz6zw9yg-2gwhg'
 });
 map.addLayer({
-'id': 'contours',
-'type': 'line',
-'source': 'contours',
+'id': 'clinics',
+'type': 'dot',
+'source': 'clinics',
 'source-layer': 'contour',
 'layout': {
 'visibility': 'visible',
@@ -170,7 +170,7 @@ map.addLayer({
 });
 });
  
-var toggleableLayerIds = ['contours', 'museums'];
+var toggleableLayerIds = ['clinics', 'direct action'];
  
 for (var i = 0; i < toggleableLayerIds.length; i++) {
 var id = toggleableLayerIds[i];
