@@ -1,5 +1,5 @@
-# Best Pizza in the Lansing Area
-Visit to learn about the top 15 places for pizza voted on by the 2019-2020 CHI Fellows.
+# sites of direct action
+Young lords 2019-2020 CHI Fellows.
 
 ## Copyright and License
 
