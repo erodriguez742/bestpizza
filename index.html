@@ -93,7 +93,7 @@
      		 }
 	
 	.marker-clinic {
-  		background-image: url('mapbox-icon.png');
+  		background-image: url('img/kisspng-free-clinic-hospital-computer-icons-health-care-crop-5ac5760d5bca14.786882021522890253376.jpg');
  		background-size: cover;
   		width: 50px;
   		height: 50px;
@@ -230,7 +230,43 @@ geojson.features.forEach(function(marker) {
     .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
     .addTo(map);
 });
-    
+    var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-73.9245, 40.8168]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'Washington, D.C.'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-73.9288, 40.8194]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'San Francisco, California'
+    }
+  }]
+};
+	// add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker-clinic';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+});	    
 </script>
 	    </div>
 
