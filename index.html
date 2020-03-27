@@ -95,8 +95,8 @@
 	.marker-clinic {
   		background-image: url('img/kisspng-free-clinic-hospital-computer-icons-health-care-crop-5ac5760d5bca14.786882021522890253376.jpg');
  		background-size: cover;
-  		width: 50px;
-  		height: 50px;
+  		width: 30px;
+  		height: 30px;
   		border-radius: 50%;
   		cursor: pointer;
 		}
@@ -119,7 +119,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -230,7 +230,8 @@ geojson.features.forEach(function(marker) {
     .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
     .addTo(map);
 });
-    var geojson = {
+    
+var geojson = {
   type: 'FeatureCollection',
   features: [{
     type: 'Feature',
@@ -265,6 +266,8 @@ geojson.features.forEach(function(marker) {
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
     .addTo(map);
 });	    
 </script>
