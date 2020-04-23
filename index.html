@@ -159,7 +159,7 @@ a {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -197,6 +197,7 @@ a {
   <h2>Year: <label id='active-hour'>1976</label></h2>
   <input id='slider' class='row' type='range' min='1976' max='1999' step='1' value='12' />
 </div>
+		    
 	    </div>
             <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZXJvZHJpZ3Vlejc0MiIsImEiOiJjazVpOTl5aDcwMHBwM21wbzE5bWxqMW55In0.o3xJbQTJLQGGSRKzpjVtIQ'; 
@@ -219,14 +220,14 @@ a {
       'circle-radius': [
         'interpolate',
         ['linear'],
-        ['number', ['get', 'Casualty']],
+        ['number', ['get', 'year']],
         0, 4,
         5, 24
       ],
       'circle-color': [
         'interpolate',
         ['linear'],
-        ['number', ['get', 'Casualty']],
+        ['number', ['get', 'year']],
         0, '#2DC4B2',
         1, '#3BB3C3',
         2, '#669EC4',
