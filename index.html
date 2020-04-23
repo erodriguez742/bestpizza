@@ -159,7 +159,7 @@ a {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -244,9 +244,6 @@ a {
   var hour = parseInt(e.target.value);
   // update the map
   map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
-});
-		    });
-		    
 		    
   // converting 0-23 hour to AMPM format
   var ampm = hour >= 12 ? 'PM' : 'AM';
@@ -255,6 +252,7 @@ a {
   // update text in the UI
   document.getElementById('active-hour').innerText = hour12 + ampm;
 });
+		    });
 		    var geojson = {
   type: 'FeatureCollection',
   features: [{
