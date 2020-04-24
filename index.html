@@ -33,7 +33,7 @@
 <!-- Initiates Modal and Uses cookies for Dont Show Again Checkbox -->     
 
 </head>
-
+	<body id="page-top" class="index">
 <style>
 		#menu {
 			background: #fff;
@@ -80,7 +80,7 @@
           body {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
           }
 
           #map {
@@ -142,7 +142,6 @@
             text-align: center;
           }
           </style>
-		<body id="page-top" class="index">
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -151,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -182,7 +181,8 @@
 	    <section class="page-section portfolio" id="portfolio">
             <div class="container">
 	
-	 <div id='console'>
+	<div id="map"></div>
+		    <div id='console'>
   			<h1>Healthcare Facility Openings</h1>
   				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openings</a> in NYC, 1839-2012
           </p>
@@ -199,21 +199,9 @@
             </div>
           </div>
 	   <div class='session' id='sliderbar'>
-              <h1>Hour: <label id='active-hour'>12PM</label></h1>
+              <h2>Hour: <label id='active-hour'>12PM</label></h2>
               <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
         </div>
-        <div class="session">
-          <h1>Day of the week</h1>
-          <div class="row" id="filters">
-            <input id="all" type="radio" name="toggle" value="all" checked="checked">
-            <label for="all">All</label>
-            <input id="weekday" type="radio" name="toggle" value="weekday">
-            <label for="weekday">Weekday</label>
-            <input id="weekend" type="radio" name="toggle" value="weekend">
-            <label for="weekend">Weekend</label>
-          </div>
-        </div>
-      </div>
 			
 			    
 		    
@@ -271,6 +259,7 @@
 });
 </script>
 	 
+
 </body>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
    
@@ -302,7 +291,9 @@
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 	 
-
+		    </div>
+		    </section>
+</body>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
    
            
