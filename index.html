@@ -149,6 +149,25 @@ a {
   padding: 10px 20px;
   background-color: white;
 }
+		    .session {
+  margin-bottom: 20px;
+}
+
+.row {
+  height: 12px;
+  width: 100%;
+}
+
+.colors {
+  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
+  margin-bottom: 5px;
+}
+
+.label {
+  width: 15%;
+  display: inline-block;
+  text-align: center;
+}
 		    
 	</style>
     <!-- Navigation -->
@@ -159,7 +178,7 @@ a {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -193,7 +212,20 @@ a {
 	<div id="map"></div>
 		    <div id='console'>
   			<h1>Healthcare Facility Openings</h1>
-  				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openingss</a> in NYC, 1839-2012</p>
+  				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openings</a> in NYC, 1839-2012</p>
+</div>
+		    <div class='session'>
+  <h2>Casualty</h2>
+  <div class='row colors'>
+  </div>
+  <div class='row labels'>
+    <div class='label'>0</div>
+    <div class='label'>1</div>
+    <div class='label'>2</div>
+    <div class='label'>3</div>
+    <div class='label'>4</div>
+    <div class='label'>5+</div>
+  </div>
 </div>
 <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZXJvZHJpZ3Vlejc0MiIsImEiOiJjazVpOTl5aDcwMHBwM21wbzE5bWxqMW55In0.o3xJbQTJLQGGSRKzpjVtIQ'; 
@@ -203,11 +235,10 @@ a {
               center: [-73.935801, 40.806972],
               zoom: 12
             });
-		    map.on('load', function() {
+		   map.on('load', function() {
   map.addLayer({
     id: 'collisions',
     type: 'circle',
-    filter: ['==', ['number', ['get', 'year']], 1976],
     source: {
       type: 'geojson',
       data: 'CLEANEDNYC_Health___Hospitals_patient_care_locations_-_2011 (1) (1).geojson' // replace this with the url of your own geojson
@@ -234,21 +265,8 @@ a {
       'circle-opacity': 0.8
     }
   });
-
-	document
-	.getElementById('slider')
-	.addEventListener('input', function(e) {
-  var hour = parseInt(e.target.value);
-  // update the map
-  map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
-		    
-  // converting 0-23 hour to AMPM format
-  var ampm = hour >= 12 ? 'PM' : 'AM';
-  var hour12 = hour % 12 ? hour % 12 : 12;
-
-  // update text in the UI
-  document.getElementById('active-hour').innerText = hour12 + ampm;
 });
+
 		    });
 		    var geojson = {
   type: 'FeatureCollection',
