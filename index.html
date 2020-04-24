@@ -150,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -181,8 +181,7 @@
 	    <section class="page-section portfolio" id="portfolio">
             <div class="container">
 	
-	<div id="map"></div>
-		    <div id='console'>
+	 <div id='console'>
   			<h1>Healthcare Facility Openings</h1>
   				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openings</a> in NYC, 1839-2012
           </p>
@@ -202,6 +201,18 @@
               <h2>Hour: <label id='active-hour'>12PM</label></h2>
               <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
         </div>
+        <div class="session">
+          <h2>Day of the week</h2>
+          <div class="row" id="filters">
+            <input id="all" type="radio" name="toggle" value="all" checked="checked">
+            <label for="all">All</label>
+            <input id="weekday" type="radio" name="toggle" value="weekday">
+            <label for="weekday">Weekday</label>
+            <input id="weekend" type="radio" name="toggle" value="weekend">
+            <label for="weekend">Weekend</label>
+          </div>
+        </div>
+      </div>
 			
 			    
 		    
@@ -213,7 +224,11 @@
               center: [-73.935801, 40.806972],
               zoom: 12
             });
+
             map.on('load', function() {
+              var filterHour = ['==', ['number', ['get', 'Hour']], 12];
+              var filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+
               map.addLayer({
                 id: 'collisions',
                 type: 'circle',
@@ -233,7 +248,7 @@
                   ],
                   'circle-color': [
                     'interpolate',
-                    ['exponential', 1],
+                    ['linear'],
                     ['number', ['get', 'Casualty']],
                     0,
                     '#2DC4B2',
@@ -250,7 +265,7 @@
                   ],
                   'circle-opacity': 0.8
                 },
-                'filter': ['==', ['number', ['get', 'Hour']], 12]
+                'filter': ['all', filterHour, filterDay]
               });
 
               // update hour filter when the slider is dragged
@@ -259,11 +274,8 @@
                 .addEventListener('input', function(e) {
                   var hour = parseInt(e.target.value);
                   // update the map
-                  map.setFilter('collisions', [
-                    '==',
-                    ['number', ['get', 'Hour']],
-                    hour
-                  ]);
+                  filterHour = ['==', ['number', ['get', 'Hour']], hour];
+                  map.setFilter('collisions', ['all', filterHour, filterDay]);
 
                   // converting 0-23 hour to AMPM format
                   var ampm = hour >= 12 ? 'PM' : 'AM';
@@ -272,9 +284,37 @@
                   // update text in the UI
                   document.getElementById('active-hour').innerText = hour12 + ampm;
                 });
-            });
-          </script>
 
+              document
+                .getElementById('filters')
+                .addEventListener('change', function(e) {
+                  var day = e.target.value;
+                  // update the map filter
+                  if (day === 'all') {
+                    filterDay = ['!=', ['string', ['get', 'Day']], 'placeholder'];
+                  } else if (day === 'weekday') {
+                    filterDay = [
+                      'match',
+                      ['get', 'Day'],
+                      ['Sat', 'Sun'],
+                      false,
+                      true
+                    ];
+                  } else if (day === 'weekend') {
+                    filterDay = [
+                      'match',
+                      ['get', 'Day'],
+                      ['Sat', 'Sun'],
+                      true,
+                      false
+                    ];
+                  } else {
+                    console.log('error');
+                  }
+                  map.setFilter('collisions', ['all', filterHour, filterDay]);
+                });
+            });
+            </script>
 </body>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
    
