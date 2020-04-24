@@ -150,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -213,52 +213,67 @@
               center: [-73.935801, 40.806972],
               zoom: 12
             });
-		   map.on('load', function() {
-  map.addLayer({
-    id: 'collisions',
-    type: 'circle',
-    filter: ['==', ['number', ['get', 'Hour']], 12],
-    source: {
-      type: 'geojson',
-      data: 'CLEANEDNYC_Health___Hospitals_patient_care_locations_-_2011 (1) (1).geojson' // replace this with the url of your own geojson
-    },
-    paint: {
-      'circle-radius': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0, 4,
-        5, 24
-      ],
-      'circle-color': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0, '#2DC4B2',
-        1, '#3BB3C3',
-        2, '#669EC4',
-        3, '#8B88B6',
-        4, '#A2719B',
-        5, '#AA5E79'
-      ],
-      'circle-opacity': 0.8
-    }
-  });
-});
-	document.getElementById('slider').addEventListener('input', function(e) {
-  var hour = parseInt(e.target.value);
-  // update the map
-  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+            map.on('load', function() {
+              map.addLayer({
+                id: 'collisions',
+                type: 'circle',
+                source: {
+                  type: 'geojson',
+                  data: CLEANEDNYC_Health___Hospitals_patient_care_locations_-_2011 (1) (1).geojson' // replace this with the url of your own geojson
+                },
+                paint: {
+                  'circle-radius': [
+                    'interpolate',
+                    ['linear'],
+                    ['number', ['get', 'Casualty']],
+                    0,
+                    4,
+                    5,
+                    24
+                  ],
+                  'circle-color': [
+                    'interpolate',
+                    ['exponential', 1],
+                    ['number', ['get', 'Casualty']],
+                    0,
+                    '#2DC4B2',
+                    1,
+                    '#3BB3C3',
+                    2,
+                    '#669EC4',
+                    3,
+                    '#8B88B6',
+                    4,
+                    '#A2719B',
+                    5,
+                    '#AA5E79'
+                  ],
+                  'circle-opacity': 0.8
+                },
+                'filter': ['==', ['number', ['get', 'Hour']], 12]
+              });
 
-  // converting 0-23 hour to AMPM format
-  var ampm = hour >= 12 ? 'PM' : 'AM';
-  var hour12 = hour % 12 ? hour % 12 : 12;
+              // update hour filter when the slider is dragged
+              document
+                .getElementById('slider')
+                .addEventListener('input', function(e) {
+                  var hour = parseInt(e.target.value);
+                  // update the map
+                  map.setFilter('collisions', [
+                    '==',
+                    ['number', ['get', 'Hour']],
+                    hour
+                  ]);
 
-  // update text in the UI
-  document.getElementById('active-hour').innerText = hour12 + ampm;
-});
-</script>
-	 
+                  // converting 0-23 hour to AMPM format
+                  var ampm = hour >= 12 ? 'PM' : 'AM';
+                  var hour12 = hour % 12 ? hour % 12 : 12;
+
+                  // update text in the UI
+                  document.getElementById('active-hour').innerText = hour12 + ampm;
+                });
+            });
+          </script>
 
 </body>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
