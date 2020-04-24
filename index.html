@@ -150,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -181,8 +181,7 @@
 	    <section class="page-section portfolio" id="portfolio">
             <div class="container">
 	
-	<div id="map"></div>
-		    <div id='console'>
+	<div id='console'>
   			<h1>Healthcare Facility Openings</h1>
   				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openings</a> in NYC, 1839-2012
           </p>
@@ -202,9 +201,18 @@
               <h2>Hour: <label id='active-hour'>12PM</label></h2>
               <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
         </div>
-			
-			    
-		    
+        <div class="session">
+          <h2>Day of the week</h2>
+          <div class="row" id="filters">
+            <input id="all" type="radio" name="toggle" value="all" checked="checked">
+            <label for="all">All</label>
+            <input id="weekday" type="radio" name="toggle" value="weekday">
+            <label for="weekday">Weekday</label>
+            <input id="weekend" type="radio" name="toggle" value="weekend">
+            <label for="weekend">Weekend</label>
+          </div>
+        </div>
+      </div>    
 <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZXJvZHJpZ3Vlejc0MiIsImEiOiJjazVpOTl5aDcwMHBwM21wbzE5bWxqMW55In0.o3xJbQTJLQGGSRKzpjVtIQ'; 
             var map = new mapboxgl.Map({
