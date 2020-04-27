@@ -190,7 +190,7 @@ background: #3074a4;
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -231,82 +231,9 @@ background: #3074a4;
               center: [-73.935801, 40.806972],
               zoom: 13
             });
-		map.on('load', function() {
-// add source and layer for museums
-map.addSource('historicalNYCHospitals', {
-type: 'vector',
-url: 'mapbox://styles/erodriguez742/ck5ybojwz0uvf1isaujwsisbv'
-});
-map.addLayer({
-'id': 'historicalNYCHospitals',
-'type': 'circle',
-'source': 'historicalNYCHospitals',
-'layout': {
-// make layer visible by default
-'visibility': 'visible'
-},
-'paint': {
-'circle-radius': 8,
-'circle-color': 'rgba(55,148,179,1)'
-},
-'source-layer': 'historicalNYCHospitals'
-});
-
-map.addSource('CurrentNYCHospitals', {
-type: 'vector',
-url: 'mapbox://styles/erodriguez742/ck5ybojwz0uvf1isaujwsisbv'
-});
-map.addLayer({
-'id': 'CurrentNYCHospitals',
-'type': 'circle',
-'source': 'CurrentNYCHospitals',
-'layout': {
-// make layer visible by default
-'visibility': 'visible'
-},
-'paint': {
-'circle-radius': 8,
-'circle-color': 'rgba(55,148,179,1)'
-},
-'source-layer': 'CurrentNYCHospitals'
-});
-
- 
-// enumerate ids of the layers
-var toggleableLayerIds = ['historicalNYCHospitals', 'CurrentNYCHospitals'];
- 
-// set up the corresponding toggle button for each layer
-for (var i = 0; i < toggleableLayerIds.length; i++) {
-var id = toggleableLayerIds[i];
- 
-var link = document.createElement('a');
-link.href = '#';
-link.className = 'active';
-link.textContent = id;
- 
-link.onclick = function(e) {
-var clickedLayer = this.textContent;
-e.preventDefault();
-e.stopPropagation();
- 
-var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
- 
-// toggle layer visibility by changing the layout object's visibility property
-if (visibility === 'visible') {
-map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-this.className = '';
-} else {
-this.className = 'active';
-map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-}
-};
- 
-var layers = document.getElementById('menu');
-layers.appendChild(link);
-}   
-		};
+		
 </script>
-	 
+<iframe frameborder="0" class="juxtapose" width="100%" height="543" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=a966cea2-88a5-11ea-a879-0edaf8f81e27"></iframe>	 
 
 </body>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
