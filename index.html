@@ -150,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -181,90 +181,17 @@
 	    <section class="page-section portfolio" id="portfolio">
             <div class="container">
 	<div id="map"></div>
-	<div id='console'>
-  			<h1>Healthcare Facility Openings</h1>
-  				<p>Data: <a href='https://data.cityofnewyork.us/Health/NYC-Health-Hospitals-patient-care-locations-2011/f7b6-v6v3'>Facility Openings</a> in NYC, 1839-2012
-          </p>
-          <div class="session">
-            <h1>Density</h1>
-            <div class="row colors"></div>
-            <div class="row labels">
-              <div class="label">0</div>
-              <div class="label">1</div>
-              <div class="label">2</div>
-              <div class="label">3</div>
-              <div class="label">4</div>
-              <div class="label">5+</div>
-            </div>
-          </div>
-	   <div class='session' id='sliderbar'>
-              <h1>Year: <label id='active-hour'>1919</label></h1>
-              <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
-        </div>
-        <div class="session">
-          <h1>Before and After the YL</h1>
-          <div class="row" id="filters">
-            <input id="all" type="radio" name="toggle" value="all" checked="checked">
-            <label for="all">All</label>
-            <input id="weekday" type="radio" name="toggle" value="weekday">
-            <label for="weekday">Before 1970</label>
-            <input id="weekend" type="radio" name="toggle" value="weekend">
-            <label for="weekend">After 1970</label>
-          </div>
-        </div>
+	
    
 <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZXJvZHJpZ3Vlejc0MiIsImEiOiJjazVpOTl5aDcwMHBwM21wbzE5bWxqMW55In0.o3xJbQTJLQGGSRKzpjVtIQ'; 
             var map = new mapboxgl.Map({
               container: 'map',
-              style: 'mapbox://styles/mapbox/light-v10', // replace this with your style URL
+              style: 'mapbox://styles/erodriguez742/ck5ybojwz0uvf1isaujwsisbv', // replace this with your style URL
               center: [-73.935801, 40.806972],
-              zoom: 12
+              zoom: 13
             });
-		   map.on('load', function() {
-  map.addLayer({
-    id: 'collisions',
-    type: 'circle',
-    filter: ['==', ['number', ['get', 'Hour']], 12],
-    source: {
-      type: 'geojson',
-      data: 'CLEANEDNYC_Health___Hospitals_patient_care_locations_-_2011 (1) (1).geojson' // replace this with the url of your own geojson
-    },
-    paint: {
-      'circle-radius': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0, 4,
-        5, 24
-      ],
-      'circle-color': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0, '#2DC4B2',
-        1, '#3BB3C3',
-        2, '#669EC4',
-        3, '#8B88B6',
-        4, '#A2719B',
-        5, '#AA5E79'
-      ],
-      'circle-opacity': 0.8
-    }
-  });
-});
-	document.getElementById('slider').addEventListener('input', function(e) {
-  var hour = parseInt(e.target.value);
-  // update the map
-  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
-
-  // converting 0-23 hour to AMPM format
-  var ampm = hour >= 12 ? 'PM' : 'AM';
-  var hour12 = hour % 12 ? hour % 12 : 12;
-
-  // update text in the UI
-  document.getElementById('active-hour').innerText = hour12 + ampm;
-});
+		   
 </script>
 	 
 
