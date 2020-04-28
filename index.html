@@ -24,7 +24,10 @@
 
         var options = {
           title: 'Age vs. Weight comparison',
-          hAxis: {title: 'Number of Hospitals', minValue: 0, maxValue: 50},
+          hAxis: {title: 'Number of Hospitals', minValue: 0, maxValue: 50}, {
+            format: 'M/d/yy',
+            gridlines: {count: 15}
+          },
           vAxis: {title: 'Year', minValue: 1839, maxValue: 2020},
           legend: 'none'
         };
@@ -120,7 +123,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
