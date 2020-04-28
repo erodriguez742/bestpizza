@@ -8,11 +8,11 @@
   <meta name="author" content="">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+            google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        
+
         var data = new google.visualization.DataTable();
         data.addColumn('date', 'Time of Day');
         data.addColumn('number', 'Rating');
@@ -31,19 +31,37 @@
           [new Date(2015, 0, 31), 6], [new Date(2015, 1, 1), 7],  [new Date(2015, 1, 2), 9]
         ]);
 
+
         var options = {
-          title: 'Age vs. Weight comparison',
-          hAxis: {title: 'Number of Hospitals', minValue: 0, maxValue: 50}, {
+          title: 'Rate the Day on a Scale of 1 to 10',
+          width: 900,
+          height: 500,
+          hAxis: {
             format: 'M/d/yy',
             gridlines: {count: 15}
           },
-          vAxis: {title: 'Year', minValue: 1839, maxValue: 2020},
-          legend: 'none'
+          vAxis: {
+            gridlines: {color: 'none'},
+            minValue: 0
+          }
         };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
         chart.draw(data, options);
+
+        var button = document.getElementById('change');
+
+        button.onclick = function () {
+
+          // If the format option matches, change it to the new option,
+          // if not, reset it to the original format.
+          options.hAxis.format === 'M/d/yy' ?
+          options.hAxis.format = 'MMM dd, yyyy' :
+          options.hAxis.format = 'M/d/yy';
+
+          chart.draw(data, options);
+        };
       }
     </script>
   <title>Young Lords' Bronx</title>
@@ -132,7 +150,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
