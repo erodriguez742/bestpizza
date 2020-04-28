@@ -6,7 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Number of Hospitals', 'Year'],
+          [ 8,      12],
+          [ 4,      5.5],
+          [ 11,     14],
+          [ 4,      5],
+          [ 3,      3.5],
+          [ 6.5,    7]
+        ]);
+
+        var options = {
+          title: 'Age vs. Weight comparison',
+          hAxis: {title: 'Number of Hospitals', minValue: 0, maxValue: 50},
+          vAxis: {title: 'Year', minValue: 1839, maxValue: 2020},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
   <title>Young Lords' Bronx</title>
   
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
@@ -93,7 +120,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx</a>
+                <a class="navbar-brand" href="#page-top">Young Lords of North Harlem and the Bronx!</a>
                 <!--<a class="navbar-brand" href="about.html">About</a>-->
            </div>
 
@@ -133,6 +160,7 @@
 		    <p><h2>Over Time</h></p>
 		    <p><h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae dolor quis erat aliquet euismod nec at tellus. Vivamus at feugiat lacus. Curabitur et commodo mauris. Phasellus a mi lectus. Proin dictum eros nulla, id dapibus justo condimentum vel. Curabitur quis sapien ut nisi placerat convallis vel et enim. Ut vestibulum convallis eros, sed maximus magna sagittis quis. Nulla in sollicitudin ex. Morbi eu volutpat massa, sit amet volutpat justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras tempus eget magna id lobortis. Sed molestie tortor sem, ut facilisis diam mattis vel. Vivamus fringilla nunc a risus ornare scelerisque. Proin quis turpis fringilla, eleifend ante eget, placerat nisi. Donec blandit luctus neque at mollis. Donec sit amet ullamcorper odio.</p></h1>
 		    </div>
+		    <div id="chart_div" style="width: 900px; height: 500px;"></div>
 <!--var content = '<h2>' + feature.properties.title + '</h2><img src="' + feature.properties.image + '" alt="">';-->
    
            
